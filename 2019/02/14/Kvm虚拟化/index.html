@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Kvm虚拟化 | SubHy的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Quick Start基本1丶关闭防火墙2丶进行cpu检测,命令结果大于0表示cpu支持虚拟化。如果是等于0,就需要手动勾选虚拟化引擎1egrep -c &apos;(vmx|svm)&apos; /proc/cpuinfo Centos7.2部署Kvm一丶环境Vmware5.5虚拟化 Kvm主机：centos7.2虚拟机(桌面及开发工具安装) Kvm主机ip：192.168.229.87 Esxi5.5主机支持虚拟">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kvm虚拟化">
+<meta property="og:url" content="http://SubHyCan.github.io/2019/02/14/Kvm虚拟化/index.html">
+<meta property="og:site_name" content="SubHy的博客">
+<meta property="og:description" content="Quick Start基本1丶关闭防火墙2丶进行cpu检测,命令结果大于0表示cpu支持虚拟化。如果是等于0,就需要手动勾选虚拟化引擎1egrep -c &apos;(vmx|svm)&apos; /proc/cpuinfo Centos7.2部署Kvm一丶环境Vmware5.5虚拟化 Kvm主机：centos7.2虚拟机(桌面及开发工具安装) Kvm主机ip：192.168.229.87 Esxi5.5主机支持虚拟">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://subhycan.github.io/images/Kvm/1.jpg">
+<meta property="og:image" content="http://subhycan.github.io/images/Kvm/2.jpg">
+<meta property="og:image" content="http://subhycan.github.io/images/Kvm/3.jpg">
+<meta property="og:updated_time" content="2019-02-14T08:25:49.322Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kvm虚拟化">
+<meta name="twitter:description" content="Quick Start基本1丶关闭防火墙2丶进行cpu检测,命令结果大于0表示cpu支持虚拟化。如果是等于0,就需要手动勾选虚拟化引擎1egrep -c &apos;(vmx|svm)&apos; /proc/cpuinfo Centos7.2部署Kvm一丶环境Vmware5.5虚拟化 Kvm主机：centos7.2虚拟机(桌面及开发工具安装) Kvm主机ip：192.168.229.87 Esxi5.5主机支持虚拟">
+<meta name="twitter:image" content="http://subhycan.github.io/images/Kvm/1.jpg">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://SubHyCan.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SubHy的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">成长之路</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Kvm虚拟化" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/14/Kvm虚拟化/" class="article-date">
+  <time datetime="2019-02-14T08:25:49.322Z" itemprop="datePublished">2019-02-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Kvm虚拟化
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a><strong>Quick Start</strong></h2><h3 id="基本"><a href="#基本" class="headerlink" title="基本"></a><strong>基本</strong></h3><p>1丶关闭防火墙<br>2丶进行cpu检测,命令结果大于0表示cpu支持虚拟化。如果是等于0,就需要手动勾选虚拟化引擎<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">egrep -c <span class="string">'(vmx|svm)'</span> /proc/cpuinfo</span><br></pre></td></tr></table></figure></p>
+<h3 id="Centos7-2部署Kvm"><a href="#Centos7-2部署Kvm" class="headerlink" title="Centos7.2部署Kvm"></a><strong>Centos7.2部署Kvm</strong></h3><h4 id="一丶环境"><a href="#一丶环境" class="headerlink" title="一丶环境"></a>一丶环境</h4><p>Vmware5.5虚拟化</p>
+<p>Kvm主机：centos7.2虚拟机(桌面及开发工具安装)</p>
+<p>Kvm主机ip：192.168.229.87</p>
+<p>Esxi5.5主机支持虚拟化:</p>
+<p>修改虚拟机所属Esxi5.5主机配置文件/etc/vmware/config，末尾新增vhv.enable = “TRUE”并保存，重新引导主机(关闭主机上的所有虚拟机电源，进入维护模式，重新引导，退出维护模式，开启虚拟机)，使其支持虚拟化。</p>
+<p>登录虚拟机，执行egrep -c ‘(vmx|svm)’ /proc/cpuinfo ，输出不为0，说明该虚拟机支持cpu虚拟化。</p>
+<p><img src="/images/Kvm/1.jpg" alt=""></p>
+<h4 id="二丶安装软件"><a href="#二丶安装软件" class="headerlink" title="二丶安装软件"></a>二丶安装软件</h4><p>1丶挂载系统安装盘，进入目录/run/media/root/CentOS\ 7\ x86_64/Packages/，安装软件qume-kvm,libvirt,virt-install,bridge-utils,virt-maneger。</p>
+<p>2丶执行lsmod | grep kvm，如下图所示，说明kvm安装成功。</p>
+<p><img src="/images/Kvm/2.jpg" alt=""></p>
+<h4 id="三丶配置kvm"><a href="#三丶配置kvm" class="headerlink" title="三丶配置kvm"></a>三丶配置kvm</h4><p>1丶systemctl start libvirtd              #开启kvm服务</p>
+<p>​      systemctl enable libvirtd             #设置开机自动启动 </p>
+<p>​      systemctl status libvirtd             #查看状态</p>
+<p>2丶配置桥接网络</p>
+<p>(1)丶先备份一份/etc/sysconfig/network-scripts文件到/root目录</p>
+<p>(2)丶在/etc/sysconfig/network-scripts目录下创建ifcfg-br0文件，并写入如下内容</p>
+<p>DEVICE=br0</p>
+<p>ONBOOT=”yes”</p>
+<p>TYPE=Bridge</p>
+<p>BOOTPROTO=none</p>
+<p>IPADDR=192.168.229.87</p>
+<p>NETMASK=255.255.255.0</p>
+<p>GATEWAY=192.168.229.1</p>
+<p>(3) 丶修改配置文件ifcfg-ens192，改为如下内容</p>
+<p>DEVICEens192</p>
+<p>ONBOOT=yes</p>
+<p>BRIDGE=br0</p>
+<p>(4) 丶执行systemctl restart network重启网络,查看网卡信息，已有桥接bro</p>
+<p><img src="/images/Kvm/3.jpg" alt=""></p>
+<p>3丶点击应用程序-系统工具-虚拟系统管理器，即可对kvm虚拟机进行管理，配置网络时，选择桥接网络，ip地址与宿主机配置时一样，即可实现与宿主机和外部网络的通信(若只能与宿主机通信，则更改Esxi交换机安全配置，接受混杂模式，即可与外部通信)。</p>
+<h4 id="四丶虚拟机管理"><a href="#四丶虚拟机管理" class="headerlink" title="四丶虚拟机管理"></a>四丶虚拟机管理</h4><p>1丶若虚机无法启动，报错为splice-client-error-quark:Error initializing USB support:Other error<a href="0">99</a>，则更改虚拟机显示为VNC服务器。即可正常启动。</p>
+<p>2丶克隆虚机时，若克隆的虚机无法启动，则删除Channel-qemu-ga(使用了其他的虚拟机配置文件)，再重新新建一个，即可正常启动。 </p>
+<p>3丶相关命令：</p>
+<p>brctl show                    #查看网桥信息         </p>
+<p>virt-clone -o centos7.0 -n clone7.0 -f /var/lib/libvirt/images/clone7.0.qcow2     #克隆虚机</p>
+<p>virsh list –all              #查看所有虚机</p>
+<p>virsh start centos7.0         #启动虚机</p>
+<p>virsh shutdown centoss7.0     #关闭虚机                                     </p>
+<p>virt-install –help           #查看新建虚机相关</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://SubHyCan.github.io/2019/02/14/Kvm虚拟化/" data-id="cjs4d3oxe0002lkridthbg7wc" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/2019/02/14/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/02/14/Docker-Study/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Docker Study</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+           <div id="gitment_comments"></div>
+    
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本"><span class="toc-number">1.1.</span> <span class="toc-text">基本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Centos7-2部署Kvm"><span class="toc-number">1.2.</span> <span class="toc-text">Centos7.2部署Kvm</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#一丶环境"><span class="toc-number">1.2.1.</span> <span class="toc-text">一丶环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二丶安装软件"><span class="toc-number">1.2.2.</span> <span class="toc-text">二丶安装软件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三丶配置kvm"><span class="toc-number">1.2.3.</span> <span class="toc-text">三丶配置kvm</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#四丶虚拟机管理"><span class="toc-number">1.2.4.</span> <span class="toc-text">四丶虚拟机管理</span></a></li></ol></li></ol></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2019 SubCan&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;liyunliang@cymco.cn
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png">
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> 
+  <script>
+  var gitment = new Gitment({
+    // id: '页面 ID', // 可选。默认为 location.href
+    owner: 'SubHyCan',
+    repo: 'SubHyCan.github.io',
+    oauth: {
+    client_id: '642ba02e800e02a0a972',
+    client_secret: '62f84805c3e00a38ae2b8f62c7ffbb789ea7c4ca',
+    }
+  })
+  gitment.render(document.getElementById("gitment_comments"))
+</script>
+
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>DB Related | SubHy的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="DB2常用命令12345678910111213db2 get snapshot for dynamic sql on 库 &amp;gt;&amp;gt;snap.log                                #动态语句监控 grep -n &amp;quot;Deadlocks detected&amp;quot; snap.log | grep -v &amp;quot;= 0&amp;quot; | more">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DB Related">
+<meta property="og:url" content="http://SubHyCan.github.io/2019/02/14/DB-Related/index.html">
+<meta property="og:site_name" content="SubHy的博客">
+<meta property="og:description" content="DB2常用命令12345678910111213db2 get snapshot for dynamic sql on 库 &amp;gt;&amp;gt;snap.log                                #动态语句监控 grep -n &amp;quot;Deadlocks detected&amp;quot; snap.log | grep -v &amp;quot;= 0&amp;quot; | more">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-14T08:25:49.200Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DB Related">
+<meta name="twitter:description" content="DB2常用命令12345678910111213db2 get snapshot for dynamic sql on 库 &amp;gt;&amp;gt;snap.log                                #动态语句监控 grep -n &amp;quot;Deadlocks detected&amp;quot; snap.log | grep -v &amp;quot;= 0&amp;quot; | more">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://SubHyCan.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SubHy的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">成长之路</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-DB-Related" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/14/DB-Related/" class="article-date">
+  <time datetime="2019-02-14T08:25:49.200Z" itemprop="datePublished">2019-02-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DB Related
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="DB2"><a href="#DB2" class="headerlink" title="DB2"></a>DB2</h2><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">db2 get snapshot for dynamic sql on 库 &gt;&gt;snap.log                                #动态语句监控 </span><br><span class="line">grep -n &quot;Deadlocks detected&quot; snap.log | grep -v &quot;= 0&quot; | more                     #识别是否存在死锁 </span><br><span class="line">grep -n &quot; Number of executions&quot; snap.log | grep -v &quot;= 0&quot; | sort -k 5,5rn | more  #搜索语句的执行次数</span><br><span class="line">grep -n &quot; Rows read&quot; snap.log | grep -v &quot;= 0&quot; | sort -k 5,5rn                    #读取行数最多的语句</span><br><span class="line">grep -n &quot; Total execution time&quot; snap.log | grep -v &quot;= 0.0&quot; |sort -k 5,5rn | more #获取语句执行时间</span><br><span class="line">grep -n &quot; Statement text&quot; snap.log | more                                        #相似语句排序</span><br><span class="line">cd /opt/ibm/db2/V10.5</span><br><span class="line">db2iset -d db2inst1                                                              #如果无法删除实例，执行此命令删除实例</span><br><span class="line">db2 activate db LYLDB                                                            #激活数据库</span><br><span class="line">db2 deactivate db LYLDB                                                          #关闭激活数据库</span><br><span class="line">db2cklog $归档日志的数字编号                                                     #检查归档日志文件是否完整，返回值&apos;0&apos;，则完整</span><br><span class="line">db2diag -g level=Error,db=SI2DB                                                  #db2diag按日志输出等级，库名过滤db2diag.log文件</span><br><span class="line">db2ckbkp -h $备份文件                                                            #检测备份文件的完整性</span><br></pre></td></tr></table></figure>
+<h4 id="表统计"><a href="#表统计" class="headerlink" title="表统计"></a>表统计</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db2 &quot;select count(*) from iplat.TEWWF02&quot;         #表行数统计</span><br><span class="line">db2 &quot;describe table iplat.TEWWF02&quot;               #表结构查看</span><br><span class="line">db2 &quot;select substr(indname,1,10),substr(tabname,1,20),substr(colnames,1,20) from syscat.indexes where tabname=&apos;iplat.TEWWF02&apos;&quot;    #查看表有哪些索引    </span><br><span class="line">db2 &quot;select firstkeycard, first2keycard from syscat.indexes where indname=&apos;I_T1&apos;&quot; #具体表索引查看</span><br></pre></td></tr></table></figure>
+<h4 id="db2恢复"><a href="#db2恢复" class="headerlink" title="db2恢复"></a>db2恢复</h4><h5 id="一丶在线备份恢复，需要在线备份包和归档日志"><a href="#一丶在线备份恢复，需要在线备份包和归档日志" class="headerlink" title="一丶在线备份恢复，需要在线备份包和归档日志"></a>一丶在线备份恢复，需要在线备份包和归档日志</h5><h6 id="1丶目录一致使用这种方式"><a href="#1丶目录一致使用这种方式" class="headerlink" title="1丶目录一致使用这种方式"></a>1丶目录一致使用这种方式</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">db2 restore db lyldb from /data/db2bak/ taken at 20180710233503 LOGTARGET &apos;/data/db2bak/&apos;                #数据库恢复并指定生成目录 </span><br><span class="line">#上传所需的日志到/data/db2bak/NODE0000/LOGSTREAM0000/下面,可采用的前滚有两种：</span><br><span class="line">(1)丶db2 &quot;rollforward db lyldb to 2018-07-11-11.30.00 using local time overflow log path (/data/db2bak/)&quot;          #前滚到指定时间点</span><br><span class="line">     db2 &quot;rollforward database lyldb stop overflow log path (/data/db2bak/)&quot;</span><br><span class="line">(2)丶db2 &quot;rollforward db lyldb to end of logs and complete overflow log path (/data/db2bak/)&quot;               #前滚到活动日志的末尾</span><br></pre></td></tr></table></figure>
+<h6 id="2丶重定向恢复-目录不一致使用这种方式"><a href="#2丶重定向恢复-目录不一致使用这种方式" class="headerlink" title="2丶重定向恢复(目录不一致使用这种方式)"></a>2丶重定向恢复(目录不一致使用这种方式)</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db2 restore db lyldb from /data/db2bak taken at 20180710233503 redirect generate script /data/db2bak/restore.sql    #生成重定向脚本修改restore.sql中表空间的路径，确保与服务器目录一致</span><br><span class="line">db2 -tvf restore.sql -l out.log</span><br><span class="line">db2 &quot;rollforward db lyldb to end of logs and complete overflow log path (/data/db2bak/)&quot;</span><br></pre></td></tr></table></figure>
+<h5 id="二丶离线备份恢复"><a href="#二丶离线备份恢复" class="headerlink" title="二丶离线备份恢复"></a>二丶离线备份恢复</h5><h4 id="db2执行计划"><a href="#db2执行计划" class="headerlink" title="db2执行计划"></a>db2执行计划</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db2expln -d SI2DB -i -g -stmtfile t1.sql -terminator &apos;;&apos; -output t1.exp    #t1.sql为一条需要执行计划的sql语句,例如：</span><br><span class="line">UPDATE IPLAT.TEDMDM1 SET SEQ_VALUE=SEQ_VALUE + 1,REC_REVISOR=?,REC_REVISE_TIME=? WHERE SEQ_NAME=?</span><br></pre></td></tr></table></figure>
+<h2 id="Oracle"><a href="#Oracle" class="headerlink" title="Oracle"></a>Oracle</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lsnrctl start <span class="comment">#开启监听</span></span><br><span class="line">sqlplus / as sysdba    <span class="comment">#以管理员模式登录</span></span><br></pre></td></tr></table></figure>
+<h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h2><h3 id="suse-linux-11安装mysql"><a href="#suse-linux-11安装mysql" class="headerlink" title="suse linux 11安装mysql"></a>suse linux 11安装mysql</h3><p>从MySQL官网上分别下载mysql社区版服务器端与客户端应用包:<a href="https://dev.mysql.com/downloads/mysql/5.5.html#downloads" target="_blank" rel="noopener">官网</a><br>例如:<br>MySQL-server-5.5.59-1.sles11.x86_64.rpm<br>MySQL-client-5.5.59-1.sles11.x86_64.rpm</p>
+<h4 id="检测系统是否已安装mysql"><a href="#检测系统是否已安装mysql" class="headerlink" title="检测系统是否已安装mysql"></a>检测系统是否已安装mysql</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep mysql</span><br><span class="line"><span class="comment">#若已经安装，则执行以下命令来删除,例如</span></span><br><span class="line">rpm --nodeps -e  mysql-5.5.31-0.7.10 mysql-client-5.5.31-0.7.10</span><br></pre></td></tr></table></figure>
+<h4 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql:"></a>安装mysql:</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh MySQL-server-5.5.59-1.sles11.x86_64.rpm MySQL-client-5.5.59-1.sles11.x86_64.rpm</span><br><span class="line">mkdir /data</span><br><span class="line">chmod 755 -R /data</span><br><span class="line">mv /var/lib/mysql /data</span><br><span class="line">vim /etc/init.d/mysql  <span class="comment">#将datadir的值，修改为/data/mysql</span></span><br><span class="line">cp /usr/share/mysql/my-medium.cnf /etc/my.cnf</span><br></pre></td></tr></table></figure>
+<h4 id="编辑-my-cnf，对应内容如下"><a href="#编辑-my-cnf，对应内容如下" class="headerlink" title="编辑 my.cnf，对应内容如下"></a>编辑 my.cnf，对应内容如下</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line">password = 123456</span><br><span class="line">port = 3306</span><br><span class="line">socket = /data/mysql/mysql.sock</span><br><span class="line">default-character-set=utf8</span><br><span class="line">[mysqld]</span><br><span class="line">port = 3306</span><br><span class="line">socket = /data/mysql/mysql.sock</span><br><span class="line">skip-external-locking</span><br><span class="line">key_buffer_size = 16M</span><br><span class="line">max_allowed_packet = 1M</span><br><span class="line">table_open_cache = 64</span><br><span class="line">sort_buffer_size = 512K</span><br><span class="line">net_buffer_length = 8K</span><br><span class="line">read_buffer_size = 256K</span><br><span class="line">read_rnd_buffer_size = 512K</span><br><span class="line">myisam_sort_buffer_size = 8M</span><br><span class="line">character_set_server=utf8</span><br><span class="line">collation-server=utf8_general_ci</span><br><span class="line">lower_case_table_names=1</span><br><span class="line">character_set_client=utf8</span><br><span class="line">max_connections=1000</span><br><span class="line">[mysql]</span><br><span class="line">default-character-set = utf8</span><br><span class="line">no-auto-rehash</span><br></pre></td></tr></table></figure>
+<h4 id="重启mysql服务"><a href="#重启mysql服务" class="headerlink" title="重启mysql服务"></a>重启mysql服务</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/bin</span><br><span class="line">mysql_install_db</span><br><span class="line">service mysql restart</span><br></pre></td></tr></table></figure>
+<h4 id="登录mysql"><a href="#登录mysql" class="headerlink" title="登录mysql"></a>登录mysql</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br><span class="line">Enterpassword: (直接回车，因为第一次为空密码)</span><br><span class="line">mysql&gt; show databases;</span><br><span class="line">mysql&gt; use mysql;</span><br><span class="line">mysql&gt; show tables;</span><br><span class="line">mysql&gt; update user <span class="built_in">set</span> password=password(<span class="string">'123456'</span>)<span class="built_in">where</span> user=<span class="string">'root'</span>;  <span class="comment">#登录成功后，修改密码</span></span><br><span class="line">/usr/bin/mysqld_safe --user=mysql &amp;</span><br><span class="line">service mysql restart                   <span class="comment">#最后重启mysql，密码生效</span></span><br></pre></td></tr></table></figure>
+<h4 id="设置远程访问"><a href="#设置远程访问" class="headerlink" title="设置远程访问"></a>设置远程访问</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p                     </span><br><span class="line">mysql&gt; use mysql; </span><br><span class="line">mysql&gt; grant all PRIVILEGES on *.* to root@192.168.229.70 identified by <span class="string">'password'</span>; </span><br><span class="line">mysql&gt; select host,user from user;</span><br><span class="line">mysql&gt; FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+<h3 id="mysql忘记密码"><a href="#mysql忘记密码" class="headerlink" title="mysql忘记密码"></a>mysql忘记密码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#停止mysql服务</span></span><br><span class="line">/usr/bin/mysqld_safe --user=mysql --skip-grant-tables &amp;</span><br><span class="line"><span class="comment">#输入mysql进入数据库</span></span><br><span class="line">use mysql;  </span><br><span class="line">update user <span class="built_in">set</span> password=password(<span class="string">"密码"</span>) <span class="built_in">where</span> user=<span class="string">'root'</span>;</span><br><span class="line">flush privileges;</span><br><span class="line"><span class="comment">#重启mysql服务</span></span><br></pre></td></tr></table></figure>
+<h3 id="数据库备份"><a href="#数据库备份" class="headerlink" title="数据库备份"></a>数据库备份</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u用户 -p 库名 &gt;库名.sql              <span class="comment">#备份一个库</span></span><br><span class="line">mysqldump -u用户 -p 库名 表名 &gt;表名.sql         <span class="comment">#备份表            </span></span><br><span class="line">mysqldump -u用户 -p --all-databases &gt;all.sql   <span class="comment">#备份所有库</span></span><br></pre></td></tr></table></figure>
+<h3 id="恢复库"><a href="#恢复库" class="headerlink" title="恢复库"></a>恢复库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create database 库名 charset=utf8;</span><br><span class="line">mysql -u用户 -p 库名 &lt;库名.sql                 <span class="comment">#恢复一个库</span></span><br><span class="line"><span class="built_in">source</span> 库名.sql                                <span class="comment">#导入</span></span><br></pre></td></tr></table></figure>
+<h3 id="删除库"><a href="#删除库" class="headerlink" title="删除库"></a>删除库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop databases 库名  <span class="comment">#删除库</span></span><br></pre></td></tr></table></figure>
+<h3 id="客户端连接远程主机"><a href="#客户端连接远程主机" class="headerlink" title="客户端连接远程主机"></a>客户端连接远程主机</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -pLyl@1992 -h 192.168.229.85 -P3306</span><br></pre></td></tr></table></figure>
+<h3 id="windows安装mysql"><a href="#windows安装mysql" class="headerlink" title="windows安装mysql"></a>windows安装mysql</h3><p>1丶下载windows对应的32位或者64位版本，例如32位7.7.22社区版本<br>2丶解压到目录，例如G:\mysql-5.7.22-win32<br>3丶在解压目录bin下初始化mysql<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysqld --initialize-insecure                <span class="comment">#初始化</span></span><br><span class="line">mysql -uroot -p                             <span class="comment">#进入数据库，默认密码为空</span></span><br></pre></td></tr></table></figure></p>
+<p>4丶添加环境变量，系统变量path添加:G:\mysql-5.7.22-win32\bin<br>5丶将MySQL服务制作成windows服务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"G:\mysql-5.7.22-win32\bin\mysqld"</span> --install              <span class="comment">#制作MySQL的Windows服务</span></span><br><span class="line"><span class="string">"G:\mysql-5.7.22-win32\bin\mysqld"</span> --remove               <span class="comment">#移除MySQL的Windows服务</span></span><br><span class="line">net start mysql                                           <span class="comment">#启动MySQL服务</span></span><br><span class="line">net stop mysql                                            <span class="comment">#关闭MySQL服务</span></span><br></pre></td></tr></table></figure></p>
+<p>6丶给root设置密码,例如密码为123456<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqladmin -uroot -p password 123456</span><br></pre></td></tr></table></figure></p>
+<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><p>SUBSTR函数,取一个字段中的某几位<br>SUBSTR(S,m,n)，S表示字段名，m表示开始截取的位置，n表示截取的长度</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://SubHyCan.github.io/2019/02/14/DB-Related/" data-id="cjs4d3oxa0000lkriudunekp6" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/2019/02/14/Docker-Quick-Start-Guide/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Docker-Quick-Start-Guide
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/02/14/centos-7/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Centos 7</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+           <div id="gitment_comments"></div>
+    
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DB2"><span class="toc-number">1.</span> <span class="toc-text">DB2</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#常用命令"><span class="toc-number">1.0.1.</span> <span class="toc-text">常用命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#表统计"><span class="toc-number">1.0.2.</span> <span class="toc-text">表统计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#db2恢复"><span class="toc-number">1.0.3.</span> <span class="toc-text">db2恢复</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#一丶在线备份恢复，需要在线备份包和归档日志"><span class="toc-number">1.0.3.1.</span> <span class="toc-text">一丶在线备份恢复，需要在线备份包和归档日志</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1丶目录一致使用这种方式"><span class="toc-number">1.0.3.1.1.</span> <span class="toc-text">1丶目录一致使用这种方式</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2丶重定向恢复-目录不一致使用这种方式"><span class="toc-number">1.0.3.1.2.</span> <span class="toc-text">2丶重定向恢复(目录不一致使用这种方式)</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#二丶离线备份恢复"><span class="toc-number">1.0.3.2.</span> <span class="toc-text">二丶离线备份恢复</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#db2执行计划"><span class="toc-number">1.0.4.</span> <span class="toc-text">db2执行计划</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#Oracle"><span class="toc-number">2.</span> <span class="toc-text">Oracle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql"><span class="toc-number">3.</span> <span class="toc-text">mysql</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#suse-linux-11安装mysql"><span class="toc-number">3.1.</span> <span class="toc-text">suse linux 11安装mysql</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#检测系统是否已安装mysql"><span class="toc-number">3.1.1.</span> <span class="toc-text">检测系统是否已安装mysql</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装mysql"><span class="toc-number">3.1.2.</span> <span class="toc-text">安装mysql:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#编辑-my-cnf，对应内容如下"><span class="toc-number">3.1.3.</span> <span class="toc-text">编辑 my.cnf，对应内容如下</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#重启mysql服务"><span class="toc-number">3.1.4.</span> <span class="toc-text">重启mysql服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#登录mysql"><span class="toc-number">3.1.5.</span> <span class="toc-text">登录mysql</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置远程访问"><span class="toc-number">3.1.6.</span> <span class="toc-text">设置远程访问</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql忘记密码"><span class="toc-number">3.2.</span> <span class="toc-text">mysql忘记密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库备份"><span class="toc-number">3.3.</span> <span class="toc-text">数据库备份</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#恢复库"><span class="toc-number">3.4.</span> <span class="toc-text">恢复库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除库"><span class="toc-number">3.5.</span> <span class="toc-text">删除库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端连接远程主机"><span class="toc-number">3.6.</span> <span class="toc-text">客户端连接远程主机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#windows安装mysql"><span class="toc-number">3.7.</span> <span class="toc-text">windows安装mysql</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL"><span class="toc-number">4.</span> <span class="toc-text">SQL</span></a></li>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2019 SubCan&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;liyunliang@cymco.cn
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png">
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> 
+  <script>
+  var gitment = new Gitment({
+    // id: '页面 ID', // 可选。默认为 location.href
+    owner: 'SubHyCan',
+    repo: 'SubHyCan.github.io',
+    oauth: {
+    client_id: '642ba02e800e02a0a972',
+    client_secret: '62f84805c3e00a38ae2b8f62c7ffbb789ea7c4ca',
+    }
+  })
+  gitment.render(document.getElementById("gitment_comments"))
+</script>
+
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Spotlight for DB2使用 | SubHy的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、安装流程                                 二、Spotlight介绍Spotlight on DB2 能让你迅速发现任何性能瓶颈，无论是实时还是历史查询。Spotlight 能鉴别和诊断几千种性能问题，无论是特定用户问题、集中资源SQL事务、 I/O瓶颈、锁定等待或者其它源码问题。Spotlight for DB2 能自动为每个实例建立正常活动的底线，当检测到性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spotlight for DB2使用">
+<meta property="og:url" content="http://SubHyCan.github.io/2019/02/14/Spotlight for DB2使用/index.html">
+<meta property="og:site_name" content="SubHy的博客">
+<meta property="og:description" content="一、安装流程                                 二、Spotlight介绍Spotlight on DB2 能让你迅速发现任何性能瓶颈，无论是实时还是历史查询。Spotlight 能鉴别和诊断几千种性能问题，无论是特定用户问题、集中资源SQL事务、 I/O瓶颈、锁定等待或者其它源码问题。Spotlight for DB2 能自动为每个实例建立正常活动的底线，当检测到性">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://subhycan.github.io/images/DB2/1.jpg">
+<meta property="og:image" content="http://subhycan.github.io/images/DB2/2.jpg">
+<meta property="og:image" content="http://subhycan.github.io/images/DB2/3.jpg">
+<meta property="og:image" content="http://subhycan.github.io/images/DB2/4.jpg">
+<meta property="og:image" content="http://subhycan.github.io/images/DB2/5.jpg">
+<meta property="og:image" content="http://subhycan.github.io/images/DB2/6.jpg">
+<meta property="og:image" content="http://subhycan.github.io/images/DB2/7.jpg">
+<meta property="og:image" content="http://subhycan.github.io/images/DB2/8.jpg">
+<meta property="og:image" content="http://subhycan.github.io/images/DB2/9.jpg">
+<meta property="og:image" content="http://subhycan.github.io/images/DB2/10.jpg">
+<meta property="og:image" content="http://subhycan.github.io/images/DB2/11.jpg">
+<meta property="og:image" content="http://subhycan.github.io/images/DB2/12.jpg">
+<meta property="og:image" content="http://subhycan.github.io/images/DB2/13.jpg">
+<meta property="og:image" content="http://subhycan.github.io/images/DB2/14.jpg">
+<meta property="og:image" content="http://subhycan.github.io/images/DB2/15.jpg">
+<meta property="og:updated_time" content="2019-02-14T08:25:49.558Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spotlight for DB2使用">
+<meta name="twitter:description" content="一、安装流程                                 二、Spotlight介绍Spotlight on DB2 能让你迅速发现任何性能瓶颈，无论是实时还是历史查询。Spotlight 能鉴别和诊断几千种性能问题，无论是特定用户问题、集中资源SQL事务、 I/O瓶颈、锁定等待或者其它源码问题。Spotlight for DB2 能自动为每个实例建立正常活动的底线，当检测到性">
+<meta name="twitter:image" content="http://subhycan.github.io/images/DB2/1.jpg">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://SubHyCan.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SubHy的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">成长之路</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Spotlight for DB2使用" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/14/Spotlight for DB2使用/" class="article-date">
+  <time datetime="2019-02-14T08:25:49.558Z" itemprop="datePublished">2019-02-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Spotlight for DB2使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h3 id="一、安装流程"><a href="#一、安装流程" class="headerlink" title="一、安装流程"></a>一、安装流程</h3><p><img src="/images/DB2/1.jpg" alt="">                                </p>
+<h3 id="二、Spotlight介绍"><a href="#二、Spotlight介绍" class="headerlink" title="二、Spotlight介绍"></a>二、Spotlight介绍</h3><p>Spotlight on DB2 能让你迅速发现任何性能瓶颈，无论是实时还是历史查询。Spotlight 能鉴别和诊断几千种性能问题，无论是特定用户问题、集中资源SQL事务、 I/O瓶颈、锁定等待或者其它源码问题。Spotlight for DB2 能自动为每个实例建立正常活动的底线，当检测到性能瓶颈时自动发出警告。<br>More info: <a href="https://support.quest.com/zh-cn/spotlight-on-db2/videos" target="_blank" rel="noopener">官网链接</a>                                    </p>
+<h3 id="三、Spotlight安装-​"><a href="#三、Spotlight安装-​" class="headerlink" title="三、Spotlight安装                    ​"></a>三、Spotlight安装                    ​</h3><h4 id="1丶Spotlight安装"><a href="#1丶Spotlight安装" class="headerlink" title="1丶Spotlight安装"></a>1丶Spotlight安装</h4><p>使用“<strong>QuestSpotlight_DB2_6.9.1.206.exe</strong>”安装包，点击下一步完成安装过程。<br><img src="/images/DB2/2.jpg" alt="">            </p>
+<h4 id="2丶Spotlight破解"><a href="#2丶Spotlight破解" class="headerlink" title="2丶Spotlight破解"></a>2丶Spotlight破解</h4><p>运行“<strong>keygen.exe</strong>”生成序列号并注册软件即可使用。<br><img src="/images/DB2/3.jpg" alt="">                        </p>
+<h3 id="四、DB2-客户端配置-​"><a href="#四、DB2-客户端配置-​" class="headerlink" title="四、DB2 客户端配置                    ​"></a>四、DB2 客户端配置                    ​</h3><h4 id="1丶DB2Client安装"><a href="#1丶DB2Client安装" class="headerlink" title="1丶DB2Client安装"></a>1丶DB2Client安装</h4><p>上传并“<strong>DB2_DSClient_10.5.0.3_Win_x86-64.iso</strong>”并安装DB2客户端，用于本地编目数据库实例。<br><img src="/images/DB2/4.jpg" alt="">            </p>
+<h4 id="2丶编目DB2数据库-​"><a href="#2丶编目DB2数据库-​" class="headerlink" title="2丶编目DB2数据库                    ​"></a>2丶编目DB2数据库                    ​</h4><h5 id="（1）启动DB2-Windows客户端"><a href="#（1）启动DB2-Windows客户端" class="headerlink" title="（1）启动DB2 Windows客户端"></a>（1）启动DB2 Windows客户端</h5><p>打开CMD窗口，运行“DB2cmd”，进入Windows DB2命令行模式：<br><img src="/images/DB2/5.jpg" alt="">                </p>
+<h5 id="（2）-编目数据库"><a href="#（2）-编目数据库" class="headerlink" title="（2） 编目数据库"></a>（2） 编目数据库</h5><p>根据数据库情况，在本地对远程数据库进行挂载。<br>挂载命令：<br>节点名可自行定义，建议与数据库名一致方便查找及使用；<br>别名可自行定义，建议与数据库名一致方便查找及使用；<br><code>如果执行后不生效需执行db2 terminate 刷新缓存！</code><br>命令：<br><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db2 catalog tcpip node <span class="variable">%节点名%</span> remote <span class="variable">%IP%</span> server <span class="variable">%Port%</span> 															</span><br><span class="line">db2 catalog database <span class="variable">%数据库名%</span> as <span class="variable">%别名%</span> <span class="built_in">at</span> node <span class="variable">%节点名%</span></span><br></pre></td></tr></table></figure></p>
+<p>范例：<br><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db2 catalog tcpip node si2db remote <span class="number">192</span>.<span class="number">168</span>.<span class="number">229</span>.<span class="number">81</span> server <span class="number">50000</span> 							</span><br><span class="line">db2 catalog database si2db as si2db <span class="built_in">at</span> node si2db</span><br></pre></td></tr></table></figure></p>
+<p>一些其他命令：</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">查看编目节点： </span><br><span class="line"></span><br><span class="line">db2 list node directory  </span><br><span class="line"></span><br><span class="line">查看编目数据库： </span><br><span class="line"></span><br><span class="line">db2 list db directory  </span><br><span class="line"></span><br><span class="line">卸载编目节点： </span><br><span class="line"></span><br><span class="line">db2 uncatalog node <span class="variable">%节点名%</span> </span><br><span class="line"></span><br><span class="line">卸载编目数据库： </span><br><span class="line"></span><br><span class="line">db2 uncatalog db <span class="variable">%别名%</span></span><br></pre></td></tr></table></figure>
+<p>挂载截图：<br><img src="/images/DB2/6.jpg" alt=""><br>账号清单：                    </p>
+<table>
+<thead>
+<tr>
+<th>数据库名</th>
+<th>别名</th>
+<th>IP</th>
+<th>账号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>云平台</td>
+<td>OMCCLOUDnue</td>
+<td>略</td>
+<td>monitor</td>
+</tr>
+<tr>
+<td>驰宏数字化</td>
+<td>OMCDB</td>
+<td>略</td>
+<td>monitor</td>
+</tr>
+<tr>
+<td>多晶硅数字化</td>
+<td>SI2DB</td>
+<td>略</td>
+<td>monitor</td>
+</tr>
+<tr>
+<td>锰板块数字化</td>
+<td>MNDB</td>
+<td>略</td>
+<td>monitor</td>
+</tr>
+<tr>
+<td>钛板块数字化</td>
+<td>TIDB</td>
+<td>略</td>
+<td>monitor</td>
+</tr>
+<tr>
+<td>永昌硅数字化</td>
+<td>SIDB</td>
+<td>略</td>
+<td>monitor</td>
+</tr>
+<tr>
+<td>电商采购</td>
+<td>SUNEPS</td>
+<td>略</td>
+<td>monitor</td>
+</tr>
+<tr>
+<td>生产模块</td>
+<td>MMPM</td>
+<td>略</td>
+<td>monitor</td>
+</tr>
+<tr>
+<td>综合管理系统</td>
+<td>GAZHDB</td>
+<td>略</td>
+<td>monitor​</td>
+</tr>
+</tbody>
+</table>
+<h3 id="五、Spotlight挂载DB2数据库"><a href="#五、Spotlight挂载DB2数据库" class="headerlink" title="五、Spotlight挂载DB2数据库"></a>五、Spotlight挂载DB2数据库</h3><p>启动“Spotlight”软件，点击“FILE–connect”，选择“Add new connection”：<br><img src="/images/DB2/7.jpg" alt=""><br>选择监控类型为“DB2 LUW”<br><img src="/images/DB2/8.jpg" alt=""><br>根据所挂载DB2数据库，在“Database Alias”中选择需监控数据库，输入数据库监控用户名/密码，监控方式“Method To Retrieve Data”可以为“Snapshot”或“Monitor”，由于数据库部分Monitor未开启，建议采用Snapshot进行监控。<br><img src="/images/DB2/9.jpg" alt="">                                        </p>
+<h3 id="六、Spotlight监控DB2数据库"><a href="#六、Spotlight监控DB2数据库" class="headerlink" title="六、Spotlight监控DB2数据库"></a>六、Spotlight监控DB2数据库</h3><p>通过Spotlight可对数据库性能进行监控，每个图例项点击“鼠标右键”选择“show detail”可以看到更详细的监控信息。由于收集信息非实时，可按F5刷新数据库统计信息，以下为部分主要监控参数（包含但不仅限于）：                                    </p>
+<h4 id="1丶表空间使用情况监控"><a href="#1丶表空间使用情况监控" class="headerlink" title="1丶表空间使用情况监控"></a>1丶表空间使用情况监控</h4><p>通过“show detail”菜单可看到数据库内所有表空间现有大小及剩余空间，由于本数据库表空间均为“Auto Extent”，该监控项可仅作监控，不作为扩容依据。<br><img src="/images/DB2/10.jpg" alt="">                    </p>
+<h4 id="2丶表锁监控（重点监控）"><a href="#2丶表锁监控（重点监控）" class="headerlink" title="2丶表锁监控（重点监控）"></a>2丶表锁监控（重点监控）</h4><p>出现“黄色” “Pending Locks”可确认此时数据库出现表锁，点击该项目使用“show detail”菜单对表锁进行详细分析，包括表锁出现原因及所运行Sql以作详细分析。<br><img src="/images/DB2/11.jpg" alt="">                    </p>
+<p>“show detail”页面注意“Locks Held” 、 “DeadLocks”两个参数，通过点击存在以上两种情况的行，可看在下方页面中看到详细的加锁信息。<br><img src="/images/DB2/12.jpg" alt="">    </p>
+<h4 id="3丶缓冲池监控（重点监控）"><a href="#3丶缓冲池监控（重点监控）" class="headerlink" title="3丶缓冲池监控（重点监控）"></a>3丶缓冲池监控（重点监控）</h4><p>可对现有缓冲池命中率进行监控，注意：缓冲池命中率应大于95%。<br><img src="/images/DB2/13.jpg" alt="">                    </p>
+<h4 id="4丶数据库读写情况监控"><a href="#4丶数据库读写情况监控" class="headerlink" title="4丶数据库读写情况监控"></a>4丶数据库读写情况监控</h4><p>从该数值可知目前从客户端代理直接调用数据库表空间的读写情况。<br><img src="/images/DB2/14.jpg" alt="">                </p>
+<h4 id="5丶Sql运行情况"><a href="#5丶Sql运行情况" class="headerlink" title="5丶Sql运行情况"></a>5丶Sql运行情况</h4><p>通过对运行Sql占用时间进行排序，收集占用时间最长的Sql进行进一步调优。<br><img src="/images/DB2/15.jpg" alt="">                    </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://SubHyCan.github.io/2019/02/14/Spotlight for DB2使用/" data-id="cjs4d3oxh0005lkriu0cap7cz" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/14/Windows-Related/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Windows-Related</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+           <div id="gitment_comments"></div>
+    
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、安装流程"><span class="toc-number">1.</span> <span class="toc-text">一、安装流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、Spotlight介绍"><span class="toc-number">2.</span> <span class="toc-text">二、Spotlight介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、Spotlight安装-​"><span class="toc-number">3.</span> <span class="toc-text">三、Spotlight安装                    ​</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1丶Spotlight安装"><span class="toc-number">3.1.</span> <span class="toc-text">1丶Spotlight安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2丶Spotlight破解"><span class="toc-number">3.2.</span> <span class="toc-text">2丶Spotlight破解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、DB2-客户端配置-​"><span class="toc-number">4.</span> <span class="toc-text">四、DB2 客户端配置                    ​</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1丶DB2Client安装"><span class="toc-number">4.1.</span> <span class="toc-text">1丶DB2Client安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2丶编目DB2数据库-​"><span class="toc-number">4.2.</span> <span class="toc-text">2丶编目DB2数据库                    ​</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#（1）启动DB2-Windows客户端"><span class="toc-number">4.2.1.</span> <span class="toc-text">（1）启动DB2 Windows客户端</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#（2）-编目数据库"><span class="toc-number">4.2.2.</span> <span class="toc-text">（2） 编目数据库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、Spotlight挂载DB2数据库"><span class="toc-number">5.</span> <span class="toc-text">五、Spotlight挂载DB2数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、Spotlight监控DB2数据库"><span class="toc-number">6.</span> <span class="toc-text">六、Spotlight监控DB2数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1丶表空间使用情况监控"><span class="toc-number">6.1.</span> <span class="toc-text">1丶表空间使用情况监控</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2丶表锁监控（重点监控）"><span class="toc-number">6.2.</span> <span class="toc-text">2丶表锁监控（重点监控）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3丶缓冲池监控（重点监控）"><span class="toc-number">6.3.</span> <span class="toc-text">3丶缓冲池监控（重点监控）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4丶数据库读写情况监控"><span class="toc-number">6.4.</span> <span class="toc-text">4丶数据库读写情况监控</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5丶Sql运行情况"><span class="toc-number">6.5.</span> <span class="toc-text">5丶Sql运行情况</span></a></li></ol></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2019 SubCan&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;liyunliang@cymco.cn
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png">
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> 
+  <script>
+  var gitment = new Gitment({
+    // id: '页面 ID', // 可选。默认为 location.href
+    owner: 'SubHyCan',
+    repo: 'SubHyCan.github.io',
+    oauth: {
+    client_id: '642ba02e800e02a0a972',
+    client_secret: '62f84805c3e00a38ae2b8f62c7ffbb789ea7c4ca',
+    }
+  })
+  gitment.render(document.getElementById("gitment_comments"))
+</script>
+
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>

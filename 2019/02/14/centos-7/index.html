@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Centos 7 | SubHy的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Quick StartFirewall查看默认防火墙状态1firewall-cmd --state 查看防火墙状态1systemctl list-unit-files|grep firewalld.service 关闭防火墙1systemctl stop firewalld.service 禁止防火墙开机启动1systemctl disable firewalld.service 查看已经开放的端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Centos 7">
+<meta property="og:url" content="http://SubHyCan.github.io/2019/02/14/centos-7/index.html">
+<meta property="og:site_name" content="SubHy的博客">
+<meta property="og:description" content="Quick StartFirewall查看默认防火墙状态1firewall-cmd --state 查看防火墙状态1systemctl list-unit-files|grep firewalld.service 关闭防火墙1systemctl stop firewalld.service 禁止防火墙开机启动1systemctl disable firewalld.service 查看已经开放的端">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-14T08:25:49.200Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Centos 7">
+<meta name="twitter:description" content="Quick StartFirewall查看默认防火墙状态1firewall-cmd --state 查看防火墙状态1systemctl list-unit-files|grep firewalld.service 关闭防火墙1systemctl stop firewalld.service 禁止防火墙开机启动1systemctl disable firewalld.service 查看已经开放的端">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://SubHyCan.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SubHy的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">成长之路</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-centos-7" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/14/centos-7/" class="article-date">
+  <time datetime="2019-02-14T08:25:49.200Z" itemprop="datePublished">2019-02-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Centos 7
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h2 id="Firewall"><a href="#Firewall" class="headerlink" title="Firewall"></a>Firewall</h2><h3 id="查看默认防火墙状态"><a href="#查看默认防火墙状态" class="headerlink" title="查看默认防火墙状态"></a>查看默认防火墙状态</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --state</span><br></pre></td></tr></table></figure>
+<h3 id="查看防火墙状态"><a href="#查看防火墙状态" class="headerlink" title="查看防火墙状态"></a>查看防火墙状态</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl list-unit-files|grep firewalld.service</span><br></pre></td></tr></table></figure>
+<h3 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld.service</span><br></pre></td></tr></table></figure>
+<h3 id="禁止防火墙开机启动"><a href="#禁止防火墙开机启动" class="headerlink" title="禁止防火墙开机启动"></a>禁止防火墙开机启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> firewalld.service</span><br></pre></td></tr></table></figure>
+<h3 id="查看已经开放的端口"><a href="#查看已经开放的端口" class="headerlink" title="查看已经开放的端口"></a>查看已经开放的端口</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --list-ports</span><br></pre></td></tr></table></figure>
+<h3 id="开放端口，例如80"><a href="#开放端口，例如80" class="headerlink" title="开放端口，例如80"></a>开放端口，例如80</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent</span><br></pre></td></tr></table></figure>
+<h3 id="关闭端口-例如80"><a href="#关闭端口-例如80" class="headerlink" title="关闭端口,例如80"></a>关闭端口,例如80</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --remove-port=80/tcp --permanent</span><br></pre></td></tr></table></figure>
+<h3 id="重新加载防火墙配置"><a href="#重新加载防火墙配置" class="headerlink" title="重新加载防火墙配置"></a>重新加载防火墙配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<h3 id="查看已启动的服务列表"><a href="#查看已启动的服务列表" class="headerlink" title="查看已启动的服务列表"></a>查看已启动的服务列表</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl list-unit-files|grep enabled</span><br></pre></td></tr></table></figure>
+<h3 id="查看是否开机启动"><a href="#查看是否开机启动" class="headerlink" title="查看是否开机启动"></a>查看是否开机启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl is-enabled firewalld.service;<span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
+<h2 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h2><h3 id="更改主机名"><a href="#更改主机名" class="headerlink" title="更改主机名"></a>更改主机名</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start NetworkManager            <span class="comment">#启动网络管理服务</span></span><br><span class="line">nmcli g hostname lylxuexi                 <span class="comment">#更改主机名</span></span><br></pre></td></tr></table></figure>
+<h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">yum -y install git                                                    <span class="comment">#安装git</span></span><br><span class="line">git config --global user.name <span class="string">"SubHyCan"</span>                              <span class="comment">#配置git用户名     </span></span><br><span class="line">git config --global user.email <span class="string">"2442734234@qq.com"</span>                    <span class="comment">#配置邮箱</span></span><br><span class="line">git config --global color.ui <span class="literal">true</span></span><br><span class="line">git init</span><br><span class="line">git remote add origin https://github.com/SubHyCan/git_data.git        <span class="comment">#添加远程的代码库到本地  </span></span><br><span class="line"><span class="built_in">cd</span> /git_data</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"# git_data"</span> &gt;&gt; README.md</span><br><span class="line">git add README.md                                                         </span><br><span class="line">git commit -m <span class="string">"first commit"</span>                                          <span class="comment">#把文件提交到本地git库，first commit为提交说明</span></span><br><span class="line">git push -u origin master                                             <span class="comment">#提交到远程代码库</span></span><br><span class="line">git status                                                            <span class="comment">#在本地的git init目录查看本地git库的状态</span></span><br><span class="line">git <span class="built_in">log</span>                                                               <span class="comment">#查看日志</span></span><br><span class="line">git reset --hard ID                                                   <span class="comment">#根据远程库提交的ID还原数据</span></span><br></pre></td></tr></table></figure>
+<h3 id="安装virtualbox"><a href="#安装virtualbox" class="headerlink" title="安装virtualbox"></a>安装virtualbox</h3><p>1丶在/etc/yum.repos.d/目录下新建virtualbox.repo并写入<code>https://download.virtualbox.org/virtualbox/rpm/el/virtualbox.repo</code>中的内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[virtualbox]</span><br><span class="line">name=Oracle Linux / RHEL / CentOS-$releasever / $basearch - VirtualBox</span><br><span class="line">baseurl=http://download.virtualbox.org/virtualbox/rpm/el/$releasever/$basearch</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">repo_gpgcheck=1</span><br><span class="line">gpgkey=https://www.virtualbox.org/download/oracle_vbox.asc</span><br></pre></td></tr></table></figure></p>
+<p>2丶更新yum缓存，命令为yum clean all和yum makecache<br>3丶yum install virtualbox</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://SubHyCan.github.io/2019/02/14/centos-7/" data-id="cjs4d3oxt0007lkri3xv56pxg" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/2019/02/14/DB-Related/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          DB Related
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+           <div id="gitment_comments"></div>
+    
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Firewall"><span class="toc-number">2.</span> <span class="toc-text">Firewall</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看默认防火墙状态"><span class="toc-number">2.1.</span> <span class="toc-text">查看默认防火墙状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看防火墙状态"><span class="toc-number">2.2.</span> <span class="toc-text">查看防火墙状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭防火墙"><span class="toc-number">2.3.</span> <span class="toc-text">关闭防火墙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#禁止防火墙开机启动"><span class="toc-number">2.4.</span> <span class="toc-text">禁止防火墙开机启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看已经开放的端口"><span class="toc-number">2.5.</span> <span class="toc-text">查看已经开放的端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开放端口，例如80"><span class="toc-number">2.6.</span> <span class="toc-text">开放端口，例如80</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭端口-例如80"><span class="toc-number">2.7.</span> <span class="toc-text">关闭端口,例如80</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重新加载防火墙配置"><span class="toc-number">2.8.</span> <span class="toc-text">重新加载防火墙配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看已启动的服务列表"><span class="toc-number">2.9.</span> <span class="toc-text">查看已启动的服务列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看是否开机启动"><span class="toc-number">2.10.</span> <span class="toc-text">查看是否开机启动</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Other"><span class="toc-number">3.</span> <span class="toc-text">Other</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#更改主机名"><span class="toc-number">3.1.</span> <span class="toc-text">更改主机名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git"><span class="toc-number">3.2.</span> <span class="toc-text">Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装virtualbox"><span class="toc-number">3.3.</span> <span class="toc-text">安装virtualbox</span></a></li></ol></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2019 SubCan&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;liyunliang@cymco.cn
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png">
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> 
+  <script>
+  var gitment = new Gitment({
+    // id: '页面 ID', // 可选。默认为 location.href
+    owner: 'SubHyCan',
+    repo: 'SubHyCan.github.io',
+    oauth: {
+    client_id: '642ba02e800e02a0a972',
+    client_secret: '62f84805c3e00a38ae2b8f62c7ffbb789ea7c4ca',
+    }
+  })
+  gitment.render(document.getElementById("gitment_comments"))
+</script>
+
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>
