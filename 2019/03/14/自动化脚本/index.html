@@ -3,19 +3,19 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>Linux下日常安装 | SubHy的博客</title>
+  <title>自动化脚本 | SubHy的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="linux安装JDK1丶解压缩包 tar -zxvf jdk-8u92-linux.tar.gz -C /usr/local2丶配置java环境变量 vi /etc/profile,末行加上以下内容并保存。1234export JAVA_HOME=/usr/local/jdk1.8.0_92export CLASSPATH=.:$JAVA_HOME/jre/lib:$JAVA_HOME/lib/t">
+  <meta name="description" content="Linux主机批量执行命令SUSE 11下批量安装snmp和sysstat12345678910111213141516171819202122232425262728293031323334353637# /bin/basha=$(cat ip.txt|wc -l)for((i=1;i&amp;lt;=$a;i++));    do     IP=$(sed -n $i&apos;p&apos; ip.txt)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux下日常安装">
-<meta property="og:url" content="http://SubHyCan.github.io/2019/02/14/Linux下日常安装/index.html">
+<meta property="og:title" content="自动化脚本">
+<meta property="og:url" content="http://SubHyCan.github.io/2019/03/14/自动化脚本/index.html">
 <meta property="og:site_name" content="SubHy的博客">
-<meta property="og:description" content="linux安装JDK1丶解压缩包 tar -zxvf jdk-8u92-linux.tar.gz -C /usr/local2丶配置java环境变量 vi /etc/profile,末行加上以下内容并保存。1234export JAVA_HOME=/usr/local/jdk1.8.0_92export CLASSPATH=.:$JAVA_HOME/jre/lib:$JAVA_HOME/lib/t">
+<meta property="og:description" content="Linux主机批量执行命令SUSE 11下批量安装snmp和sysstat12345678910111213141516171819202122232425262728293031323334353637# /bin/basha=$(cat ip.txt|wc -l)for((i=1;i&amp;lt;=$a;i++));    do     IP=$(sed -n $i&apos;p&apos; ip.txt)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-14T08:25:49.416Z">
+<meta property="og:updated_time" content="2019-03-14T07:12:47.651Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux下日常安装">
-<meta name="twitter:description" content="linux安装JDK1丶解压缩包 tar -zxvf jdk-8u92-linux.tar.gz -C /usr/local2丶配置java环境变量 vi /etc/profile,末行加上以下内容并保存。1234export JAVA_HOME=/usr/local/jdk1.8.0_92export CLASSPATH=.:$JAVA_HOME/jre/lib:$JAVA_HOME/lib/t">
+<meta name="twitter:title" content="自动化脚本">
+<meta name="twitter:description" content="Linux主机批量执行命令SUSE 11下批量安装snmp和sysstat12345678910111213141516171819202122232425262728293031323334353637# /bin/basha=$(cat ip.txt|wc -l)for((i=1;i&amp;lt;=$a;i++));    do     IP=$(sed -n $i&apos;p&apos; ip.txt)">
   
   
     <link rel="icon" href="/favicon.png">
@@ -66,10 +66,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Linux下日常安装" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-自动化脚本" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/02/14/Linux下日常安装/" class="article-date">
-  <time datetime="2019-02-14T08:25:49.416Z" itemprop="datePublished">2019-02-14</time>
+    <a href="/2019/03/14/自动化脚本/" class="article-date">
+  <time datetime="2019-03-14T07:12:47.651Z" itemprop="datePublished">2019-03-14</time>
 </a>
     
   </div>
@@ -80,7 +80,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Linux下日常安装
+      自动化脚本
     </h1>
   
 
@@ -90,15 +90,12 @@
       
         <!-- Table of Contents -->
         
-        <h3 id="linux安装JDK"><a href="#linux安装JDK" class="headerlink" title="linux安装JDK"></a><strong>linux安装JDK</strong></h3><p>1丶解压缩包 tar -zxvf jdk-8u92-linux.tar.gz -C /usr/local<br>2丶配置java环境变量 vi /etc/profile,末行加上以下内容并保存。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/local/jdk1.8.0_92</span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/jre/lib:$JAVA_HOME/lib/tools.jar</span><br><span class="line">export JRE_HOME=$JAVA_HOME/jre</span><br><span class="line">export PATH=$JAVA_HOME/bin:$PATH</span><br></pre></td></tr></table></figure></p>
-<p>3丶source /etc/profile,使配置生效。<br>4丶java -version查看安装是否成功。</p>
-<h3 id="linux源码安装Nginx"><a href="#linux源码安装Nginx" class="headerlink" title="linux源码安装Nginx"></a><strong>linux源码安装Nginx</strong></h3><p>1丶查看gcc,gcc-c++是否安装，如果没有先安装gcc,gcc-c++.<br>2丶安装pcre。<br>tar -zxvf pcre-8.39.tar.gz -C /tmp<br>cd /tmp/pcre-8.39<br>./configure –prefix=/usr/local/pcre<br>make&amp;&amp;make install<br>3丶安装openssl.<br>tar -zxvf openssl-1.1.0-pre4.tar.gz -C /tmp<br>cd /tmp/openssl-1.1.0-pre4<br>./config –prefix=/usr/local/openssl<br>make&amp;&amp;make install<br>4丶安装zlib.<br>tar -zxvf zlib-1.2.8.tar.gz  -C /tmp<br>cd /tmp/zlib-1.2.8<br>./configure –prefix=/usr/local/zlib<br>make&amp;&amp;make install<br>5丶安装nginx.<br>tar -zxvf nginx-1.11.1.tar.gz  -C /tmp<br>cd /tmp/nginx-1.11.1<br>./configure –prefix=/usr/local/nginx –with-pcre=/tmp/pcre-8.39 –with-openssl=/tmp/openssl-1.1.0-pre4 –with-zlib=/tmp/zlib-1.2.8         <!--注意路径为源码--><br>make&amp;&amp;make install<br>cd /usr/local/nginx/sbin<br>./nginx                       <!--启动nginx <http://localhost> 查看安装是否成功--><br>./nginx -s reload             <!--当修改配置文件后重新加载--><br>./nginx -t                    <!--查看配置文件是否正确--></p>
-<h3 id="apache编译安装-安装和nginx类似"><a href="#apache编译安装-安装和nginx类似" class="headerlink" title="apache编译安装(安装和nginx类似)"></a><strong>apache编译安装(安装和nginx类似)</strong></h3><p>1丶安装pcre,检测gcc依赖<br>2丶安装apr<br>3丶安装apr-util<br>4丶安装httpd</p>
+        <h2 id="Linux主机批量执行命令"><a href="#Linux主机批量执行命令" class="headerlink" title="Linux主机批量执行命令"></a>Linux主机批量执行命令</h2><h3 id="SUSE-11下批量安装snmp和sysstat"><a href="#SUSE-11下批量安装snmp和sysstat" class="headerlink" title="SUSE 11下批量安装snmp和sysstat"></a>SUSE 11下批量安装snmp和sysstat</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> /bin/bash</span></span><br><span class="line">a=$(cat ip.txt|wc -l)</span><br><span class="line">for((i=1;i&lt;=$a;i++));  </span><br><span class="line">  do</span><br><span class="line">     IP=$(sed -n $i'p' ip.txt)         #打印匹配的行</span><br><span class="line">     PASSWORD=$(sed -n  $i'p' password.txt)</span><br><span class="line">     echo </span><br><span class="line">     echo -e "\033[47;30m 目前安装: \033[0m"</span><br><span class="line">     echo -e "\033[47;30m $IP \033[0m"</span><br><span class="line">/usr/bin/expect &lt;&lt; EOF</span><br><span class="line">set timeout 3</span><br><span class="line">spawn ssh root@$IP                 #默认都是使用root账号</span><br><span class="line">expect &#123;</span><br><span class="line">        "*yes/no" &#123;send "yes\r" ; exp_continue&#125;</span><br><span class="line">        "*assword: " &#123;send "$PASSWORD\r"&#125;</span><br><span class="line">	&#125;	</span><br><span class="line">expect "*#*" &#123;send "mkdir -p /tmp/soft/snmp/\r"&#125;</span><br><span class="line">expect "*#*" &#123;send "scp root@192.168.11.95:/tmp/soft/snmp/* /tmp/soft/snmp/\r"&#125;</span><br><span class="line">expect &#123;</span><br><span class="line">        "*yes/no" &#123;send "yes\r" ; exp_continue&#125;</span><br><span class="line">        "*assword: " &#123;send "rootadmin\r"&#125;</span><br><span class="line">	&#125;</span><br><span class="line">expect "*#*" &#123;send "rpm -i /tmp/soft/snmp/net-snmp-5.4.2.1-8.12.16.1.x86_64.rpm /tmp/soft/snmp/perl-SNMP-5.4.2.1-8.12.16.1.x86_64.rpm\r"&#125;</span><br><span class="line">expect "*#*" &#123;send "\r"&#125;</span><br><span class="line">expect "*#*" &#123;send "rpm -i /tmp/soft/snmp/sysstat-8.1.5-7.45.24.x86_64.rpm\r"&#125;</span><br><span class="line">expect "*#*" &#123;send "service snmpd start\r"&#125;</span><br><span class="line">expect "*#*" &#123;send "echo rocommunity ITsvs617 192.168.11.0/24 &gt;&gt; /etc/snmp/snmpd.conf\r"&#125;</span><br><span class="line">expect "*#*" &#123;send "cat  /etc/snmp/snmpd.conf\r"&#125;</span><br><span class="line">expect "*#*" &#123;send "service snmpd restart\r"&#125;</span><br><span class="line">expect eof</span><br><span class="line">EOF</span><br><span class="line">     echo</span><br><span class="line">     echo -e "\033[47;30m 按任意键继续 \033[0m"</span><br><span class="line">     read -n 1</span><br><span class="line">     echo</span><br><span class="line">     echo -e "\033[47;30m 继续运行 \033[0m"</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://SubHyCan.github.io/2019/02/14/Linux下日常安装/" data-id="cjsvb16u40003syri74vm1l9l" class="article-share-link">分享</a>
+      <a data-url="http://SubHyCan.github.io/2019/03/14/自动化脚本/" data-id="cjt8arjno0000serid7qcz9nd" class="article-share-link">分享</a>
       
       
       
@@ -150,19 +147,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/02/14/Windows-Related/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          Windows-Related
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/02/14/Kvm虚拟化/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/03/14/Python-3-Study/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">Kvm虚拟化</div>
+      <div class="article-nav-title">Python 3 Study</div>
     </a>
   
 </nav>
@@ -200,7 +188,7 @@
       
         <strong class="toc-title">文章目录</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#linux安装JDK"><span class="toc-number">1.</span> <span class="toc-text">linux安装JDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#linux源码安装Nginx"><span class="toc-number">2.</span> <span class="toc-text">linux源码安装Nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#apache编译安装-安装和nginx类似"><span class="toc-number">3.</span> <span class="toc-text">apache编译安装(安装和nginx类似)</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux主机批量执行命令"><span class="toc-number">1.</span> <span class="toc-text">Linux主机批量执行命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SUSE-11下批量安装snmp和sysstat"><span class="toc-number">1.1.</span> <span class="toc-text">SUSE 11下批量安装snmp和sysstat</span></a></li></ol></li></ol>
           </div>
       </div>
     </div>
